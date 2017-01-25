@@ -1,0 +1,22 @@
+@import '../main.scss';
+
+// the map you pass to the nestable mixin gets merged into the base grid options,
+// so only need to redefine values that you would like to be different from the defaults.
+$nestable-options: (
+  gutter-width: 30px,
+  container-class: 'row',
+  column-class: 'col',
+  breakpoints: (
+    sm: 576px,
+    md: 768px,
+    lg: 992px,
+    xl: 1200px
+  ),
+  output-sizes: (
+    sm: (6),
+    md: (4, 6, 8),
+    lg: (3, 4, 6, 8, 9)
+  )
+);
+
+@include nestable($nestable-options);

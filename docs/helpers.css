@@ -1,0 +1,88 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+  overflow: hidden; }
+
+[class*=cols]::before, [class*=col]::before {
+  content: attr(class);
+  color: #aaa;
+  font-size: 20px;
+  line-height: 40px;
+  display: block;
+  font-weight: bold;
+  text-align: center;
+  padding: 15px 0;
+  background-color: #e6ffe6; }
+
+[class*=cols] [class*=cols]::before, [class*=cols] [class*=col]::before, [class*=col] [class*=cols]::before, [class*=col] [class*=col]::before {
+  background-color: #ffdb99; }
+
+[class*=cols] [class*=cols]:empty::before, [class*=cols] [class*=col]:empty::before, [class*=col] [class*=cols]:empty::before, [class*=col] [class*=col]:empty::before {
+  background-color: #ededed; }
+
+[class*=cols]:empty, [class*=col]:empty {
+  position: relative;
+  margin-bottom: 20px; }
+  [class*=cols]:empty::before, [class*=col]:empty::before {
+    background-color: #ededed; }
+
+.eg-cs {
+  text-align: justify;
+  text-justify: distribute;
+  font-size: 0; }
+  @supports (display: -webkit-flex) or (display: flex) {
+    .eg-cs {
+      text-align: inherit;
+      text-justify: auto;
+      font-size: inherit;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-flex-wrap: wrap;
+      flex-wrap: wrap;
+      -webkit-justify-content: space-between;
+      justify-content: space-between; } }
+  .eg-cs::after {
+    content: '';
+    width: 100%;
+    display: inline-block; }
+    @supports (display: -webkit-flex) or (display: flex) {
+      .eg-cs::after {
+        display: none; } }
+  .eg-cs [class*=eg-cols] {
+    vertical-align: top;
+    display: inline-block;
+    font-size: 16px;
+    font-size: 1rem; }
+    @supports (display: -webkit-flex) or (display: flex) {
+      .eg-cs [class*=eg-cols] {
+        text-align: inherit;
+        display: block; } }
+    .eg-cs [class*=eg-cols], .eg-cs [class*=eg-cols] [class*=eg-cols] {
+      width: 100%; }
+  @media screen and (min-width: 1px) {
+    .eg-cs .eg-cols-m-1 {
+      width: 6.5%; } }
+  @media screen and (min-width: 1px) {
+    .eg-cs .eg-cols-m-1:not([m]) .eg-cols-m-1 {
+      width: 100%; } }
+
+body {
+  position: relative; }
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%; }
+  .overlay .eg-cs {
+    position: relative;
+    height: 100%; }
+  .overlay .eg-cols-m-1 {
+    background-color: rgba(0, 0, 255, 0.08);
+    position: relative;
+    height: 100%;
+    margin: 0; }
+    .overlay .eg-cols-m-1:before {
+      display: none; }

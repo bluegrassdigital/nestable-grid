@@ -1,0 +1,288 @@
+.cs {
+  text-align: justify;
+  text-justify: distribute;
+  font-size: 0; }
+  @supports (display: -webkit-flex) or (display: flex) {
+    .cs {
+      text-align: inherit;
+      text-justify: auto;
+      font-size: inherit;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-flex-wrap: wrap;
+      flex-wrap: wrap;
+      -webkit-justify-content: space-between;
+      justify-content: space-between; } }
+  .cs::after {
+    content: '';
+    width: 100%;
+    display: inline-block; }
+    @supports (display: -webkit-flex) or (display: flex) {
+      .cs::after {
+        display: none; } }
+  .cs [class*=cols] {
+    vertical-align: top;
+    display: inline-block;
+    font-size: 16px;
+    font-size: 1rem; }
+    @supports (display: -webkit-flex) or (display: flex) {
+      .cs [class*=cols] {
+        text-align: inherit;
+        display: block; } }
+    .cs [class*=cols], .cs [class*=cols] [class*=cols] {
+      width: 100%; }
+  @media screen and (min-width: 768px) {
+    .cs .cols-l-3 {
+      width: 15.83333%; } }
+  @media screen and (min-width: 768px) {
+    .cs .cols-l-6 {
+      width: 32.66667%; } }
+  @media screen and (min-width: 768px) {
+    .cs .cols-l-9 {
+      width: 49.5%; } }
+  @media screen and (min-width: 768px) {
+    .cs .cols-l-12 {
+      width: 66.33333%; } }
+  @media screen and (min-width: 768px) {
+    .cs .cols-l-15 {
+      width: 83.16667%; } }
+  @media screen and (min-width: 1024px) {
+    .cs .cols-xl-3 {
+      width: 15.83333%; } }
+  @media screen and (min-width: 1024px) {
+    .cs .cols-xl-6 {
+      width: 32.66667%; } }
+  @media screen and (min-width: 1024px) {
+    .cs .cols-xl-9 {
+      width: 49.5%; } }
+  @media screen and (min-width: 1024px) {
+    .cs .cols-xl-12 {
+      width: 66.33333%; } }
+  @media screen and (min-width: 1024px) {
+    .cs .cols-xl-15 {
+      width: 83.16667%; } }
+  @media screen and (min-width: 768px) {
+    .cs .cols-l-15:not([l]) .cols-l-15 {
+      width: 100%; } }
+  @media screen and (min-width: 1024px) {
+    .cs .cols-l-15:not([l]):not([class*=cols-xl]) .cols-l-15 {
+      width: 100%; } }
+  @media screen and (min-width: 768px) {
+    .cs .cols-l-15:not([l]) .cols-l-12 {
+      width: 79.76%; } }
+  @media screen and (min-width: 1024px) {
+    .cs .cols-l-15:not([l]):not([class*=cols-xl]) .cols-l-12 {
+      width: 79.76%; } }
+  @media screen and (min-width: 768px) {
+    .cs .cols-l-15:not([l]) .cols-l-9 {
+      width: 59.52%; } }
+  @media screen and (min-width: 1024px) {
+    .cs .cols-l-15:not([l]):not([class*=cols-xl]) .cols-l-9 {
+      width: 59.52%; } }
+  @media screen and (min-width: 768px) {
+    .cs .cols-l-15:not([l]) .cols-l-6 {
+      width: 39.28%; } }
+  @media screen and (min-width: 1024px) {
+    .cs .cols-l-15:not([l]):not([class*=cols-xl]) .cols-l-6 {
+      width: 39.28%; } }
+  @media screen and (min-width: 768px) {
+    .cs .cols-l-15:not([l]) .cols-l-3 {
+      width: 19.04%; } }
+  @media screen and (min-width: 1024px) {
+    .cs .cols-l-15:not([l]):not([class*=cols-xl]) .cols-l-3 {
+      width: 19.04%; } }
+  @media screen and (min-width: 1024px) {
+    .cs .cols-l-15:not([l]):not([class*=cols-xl]) .cols-xl-15 {
+      width: 100%; } }
+  @media screen and (min-width: 1024px) {
+    .cs .cols-l-15:not([l]):not([class*=cols-xl]) .cols-xl-12 {
+      width: 79.76%; } }
+  @media screen and (min-width: 1024px) {
+    .cs .cols-l-15:not([l]):not([class*=cols-xl]) .cols-xl-9 {
+      width: 59.52%; } }
+  @media screen and (min-width: 1024px) {
+    .cs .cols-l-15:not([l]):not([class*=cols-xl]) .cols-xl-6 {
+      width: 39.28%; } }
+  @media screen and (min-width: 1024px) {
+    .cs .cols-l-15:not([l]):not([class*=cols-xl]) .cols-xl-3 {
+      width: 19.04%; } }
+  @media screen and (min-width: 1024px) {
+    .cs .cols-xl-15:not([l]):not([xl]) .cols-l-15 {
+      width: 100%; } }
+  @media screen and (min-width: 1024px) {
+    .cs .cols-xl-15:not([l]):not([xl]) .cols-l-12 {
+      width: 79.76%; } }
+  @media screen and (min-width: 1024px) {
+    .cs .cols-xl-15:not([l]):not([xl]) .cols-l-9 {
+      width: 59.52%; } }
+  @media screen and (min-width: 1024px) {
+    .cs .cols-xl-15:not([l]):not([xl]) .cols-l-6 {
+      width: 39.28%; } }
+  @media screen and (min-width: 1024px) {
+    .cs .cols-xl-15:not([l]):not([xl]) .cols-l-3 {
+      width: 19.04%; } }
+  @media screen and (min-width: 1024px) {
+    .cs .cols-xl-15:not([l]):not([xl]) .cols-xl-15 {
+      width: 100%; } }
+  @media screen and (min-width: 1024px) {
+    .cs .cols-xl-15:not([l]):not([xl]) .cols-xl-12 {
+      width: 79.76%; } }
+  @media screen and (min-width: 1024px) {
+    .cs .cols-xl-15:not([l]):not([xl]) .cols-xl-9 {
+      width: 59.52%; } }
+  @media screen and (min-width: 1024px) {
+    .cs .cols-xl-15:not([l]):not([xl]) .cols-xl-6 {
+      width: 39.28%; } }
+  @media screen and (min-width: 1024px) {
+    .cs .cols-xl-15:not([l]):not([xl]) .cols-xl-3 {
+      width: 19.04%; } }
+  @media screen and (min-width: 768px) {
+    .cs .cols-l-12:not([l]) .cols-l-12 {
+      width: 100%; } }
+  @media screen and (min-width: 1024px) {
+    .cs .cols-l-12:not([l]):not([class*=cols-xl]) .cols-l-12 {
+      width: 100%; } }
+  @media screen and (min-width: 768px) {
+    .cs .cols-l-12:not([l]) .cols-l-9 {
+      width: 74.625%; } }
+  @media screen and (min-width: 1024px) {
+    .cs .cols-l-12:not([l]):not([class*=cols-xl]) .cols-l-9 {
+      width: 74.625%; } }
+  @media screen and (min-width: 768px) {
+    .cs .cols-l-12:not([l]) .cols-l-6 {
+      width: 49.25%; } }
+  @media screen and (min-width: 1024px) {
+    .cs .cols-l-12:not([l]):not([class*=cols-xl]) .cols-l-6 {
+      width: 49.25%; } }
+  @media screen and (min-width: 768px) {
+    .cs .cols-l-12:not([l]) .cols-l-3 {
+      width: 23.875%; } }
+  @media screen and (min-width: 1024px) {
+    .cs .cols-l-12:not([l]):not([class*=cols-xl]) .cols-l-3 {
+      width: 23.875%; } }
+  @media screen and (min-width: 1024px) {
+    .cs .cols-l-12:not([l]):not([class*=cols-xl]) .cols-xl-12 {
+      width: 100%; } }
+  @media screen and (min-width: 1024px) {
+    .cs .cols-l-12:not([l]):not([class*=cols-xl]) .cols-xl-9 {
+      width: 74.625%; } }
+  @media screen and (min-width: 1024px) {
+    .cs .cols-l-12:not([l]):not([class*=cols-xl]) .cols-xl-6 {
+      width: 49.25%; } }
+  @media screen and (min-width: 1024px) {
+    .cs .cols-l-12:not([l]):not([class*=cols-xl]) .cols-xl-3 {
+      width: 23.875%; } }
+  @media screen and (min-width: 1024px) {
+    .cs .cols-xl-12:not([l]):not([xl]) .cols-l-12 {
+      width: 100%; } }
+  @media screen and (min-width: 1024px) {
+    .cs .cols-xl-12:not([l]):not([xl]) .cols-l-9 {
+      width: 74.625%; } }
+  @media screen and (min-width: 1024px) {
+    .cs .cols-xl-12:not([l]):not([xl]) .cols-l-6 {
+      width: 49.25%; } }
+  @media screen and (min-width: 1024px) {
+    .cs .cols-xl-12:not([l]):not([xl]) .cols-l-3 {
+      width: 23.875%; } }
+  @media screen and (min-width: 1024px) {
+    .cs .cols-xl-12:not([l]):not([xl]) .cols-xl-12 {
+      width: 100%; } }
+  @media screen and (min-width: 1024px) {
+    .cs .cols-xl-12:not([l]):not([xl]) .cols-xl-9 {
+      width: 74.625%; } }
+  @media screen and (min-width: 1024px) {
+    .cs .cols-xl-12:not([l]):not([xl]) .cols-xl-6 {
+      width: 49.25%; } }
+  @media screen and (min-width: 1024px) {
+    .cs .cols-xl-12:not([l]):not([xl]) .cols-xl-3 {
+      width: 23.875%; } }
+  @media screen and (min-width: 768px) {
+    .cs .cols-l-9:not([l]) .cols-l-9 {
+      width: 100%; } }
+  @media screen and (min-width: 1024px) {
+    .cs .cols-l-9:not([l]):not([class*=cols-xl]) .cols-l-9 {
+      width: 100%; } }
+  @media screen and (min-width: 768px) {
+    .cs .cols-l-9:not([l]) .cols-l-6 {
+      width: 66%; } }
+  @media screen and (min-width: 1024px) {
+    .cs .cols-l-9:not([l]):not([class*=cols-xl]) .cols-l-6 {
+      width: 66%; } }
+  @media screen and (min-width: 768px) {
+    .cs .cols-l-9:not([l]) .cols-l-3 {
+      width: 32%; } }
+  @media screen and (min-width: 1024px) {
+    .cs .cols-l-9:not([l]):not([class*=cols-xl]) .cols-l-3 {
+      width: 32%; } }
+  @media screen and (min-width: 1024px) {
+    .cs .cols-l-9:not([l]):not([class*=cols-xl]) .cols-xl-9 {
+      width: 100%; } }
+  @media screen and (min-width: 1024px) {
+    .cs .cols-l-9:not([l]):not([class*=cols-xl]) .cols-xl-6 {
+      width: 66%; } }
+  @media screen and (min-width: 1024px) {
+    .cs .cols-l-9:not([l]):not([class*=cols-xl]) .cols-xl-3 {
+      width: 32%; } }
+  @media screen and (min-width: 1024px) {
+    .cs .cols-xl-9:not([l]):not([xl]) .cols-l-9 {
+      width: 100%; } }
+  @media screen and (min-width: 1024px) {
+    .cs .cols-xl-9:not([l]):not([xl]) .cols-l-6 {
+      width: 66%; } }
+  @media screen and (min-width: 1024px) {
+    .cs .cols-xl-9:not([l]):not([xl]) .cols-l-3 {
+      width: 32%; } }
+  @media screen and (min-width: 1024px) {
+    .cs .cols-xl-9:not([l]):not([xl]) .cols-xl-9 {
+      width: 100%; } }
+  @media screen and (min-width: 1024px) {
+    .cs .cols-xl-9:not([l]):not([xl]) .cols-xl-6 {
+      width: 66%; } }
+  @media screen and (min-width: 1024px) {
+    .cs .cols-xl-9:not([l]):not([xl]) .cols-xl-3 {
+      width: 32%; } }
+  @media screen and (min-width: 768px) {
+    .cs .cols-l-6:not([l]) .cols-l-6 {
+      width: 100%; } }
+  @media screen and (min-width: 1024px) {
+    .cs .cols-l-6:not([l]):not([class*=cols-xl]) .cols-l-6 {
+      width: 100%; } }
+  @media screen and (min-width: 768px) {
+    .cs .cols-l-6:not([l]) .cols-l-3 {
+      width: 48.5%; } }
+  @media screen and (min-width: 1024px) {
+    .cs .cols-l-6:not([l]):not([class*=cols-xl]) .cols-l-3 {
+      width: 48.5%; } }
+  @media screen and (min-width: 1024px) {
+    .cs .cols-l-6:not([l]):not([class*=cols-xl]) .cols-xl-6 {
+      width: 100%; } }
+  @media screen and (min-width: 1024px) {
+    .cs .cols-l-6:not([l]):not([class*=cols-xl]) .cols-xl-3 {
+      width: 48.5%; } }
+  @media screen and (min-width: 1024px) {
+    .cs .cols-xl-6:not([l]):not([xl]) .cols-l-6 {
+      width: 100%; } }
+  @media screen and (min-width: 1024px) {
+    .cs .cols-xl-6:not([l]):not([xl]) .cols-l-3 {
+      width: 48.5%; } }
+  @media screen and (min-width: 1024px) {
+    .cs .cols-xl-6:not([l]):not([xl]) .cols-xl-6 {
+      width: 100%; } }
+  @media screen and (min-width: 1024px) {
+    .cs .cols-xl-6:not([l]):not([xl]) .cols-xl-3 {
+      width: 48.5%; } }
+  @media screen and (min-width: 768px) {
+    .cs .cols-l-3:not([l]) .cols-l-3 {
+      width: 100%; } }
+  @media screen and (min-width: 1024px) {
+    .cs .cols-l-3:not([l]):not([class*=cols-xl]) .cols-l-3 {
+      width: 100%; } }
+  @media screen and (min-width: 1024px) {
+    .cs .cols-l-3:not([l]):not([class*=cols-xl]) .cols-xl-3 {
+      width: 100%; } }
+  @media screen and (min-width: 1024px) {
+    .cs .cols-xl-3:not([l]):not([xl]) .cols-l-3 {
+      width: 100%; } }
+  @media screen and (min-width: 1024px) {
+    .cs .cols-xl-3:not([l]):not([xl]) .cols-xl-3 {
+      width: 100%; } }

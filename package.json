@@ -1,0 +1,35 @@
+{
+  "name": "nestable-grid",
+  "version": "1.0.0",
+  "description": "A nestable, flexible, fully customisable responsive Sass grid system",
+  "main": "main.scss",
+  "style": "main.scss",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "sassdoc": "sassdoc ./main.scss -d ./docs/sassdoc -t default",
+    "examples": "node-sass docs/ -o docs/",
+    "docs": "npm run sassdoc && npm run examples",
+    "api": "sassdoc ./main.scss -d ./docs/api -t markdown"
+  },
+  "author": {
+    "name": "Simon Buerger",
+    "url": "https://twitter.com/simonbuerger"
+  },
+  "license": "MIT",
+  "issues": "http://github.com/bluegrassdigital/nestable-grid/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bluegrassdigital/nestable-grid.git"
+  },
+  "keywords": [
+    "sass",
+    "grid",
+    "responsive",
+	"css"
+  ],
+  "devDependencies": {
+    "node-sass": "^3.13.0",
+    "sassdoc": "^2.1.20",
+    "sassdoc-theme-markdown": "^2.0.2"
+  }
+}

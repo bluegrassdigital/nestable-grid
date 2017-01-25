@@ -24,10 +24,10 @@ We can also define exactly what size classes are required at which breakpoints, 
 
 ## Example usage
 
-See <a href="http://nestable-grid.github.io/#/page/examples.md" target="_blank">Full examples</a>
+See [Full examples](page/examples.md)
 
 ```scss
-@import 'nestable-grid/main.scss';
+@import 'nestable/main.scss';
 
 // the map you pass to the nestable mixin gets merged into the base grid options,
 // so only need to redefine values that you would like to be different from the defaults.
@@ -100,8 +100,4 @@ $nestable-options-base: (
 
 ## API
 
-See <a href="http://nestable-grid.github.io/#/iframe/sassdoc/index.html" target="_blank">API docs</a>
-
-## Contributing to nestable-grid
-
-[Github Flow](https://guides.github.com/introduction/flow/) - branch, submit pull requests
+See [API docs](iframe/sassdoc/index.html)

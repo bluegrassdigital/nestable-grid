@@ -1,0 +1,82 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+[class*=cols],[class*=col] {
+  &::before {
+    content: attr(class);
+    color: #aaa;
+    font-size: 20px;
+    line-height: 40px;
+    display: block;
+    font-weight: bold;
+    text-align: center;
+    padding: 15px 0;
+    background-color: lighten(lime, 45%);
+  }
+  [class*=cols],[class*=col] {
+    &::before {
+      background-color: lighten(orange, 30%);
+    }
+  }
+  [class*=cols]:empty,[class*=col]:empty {
+    &::before {
+      background-color: #ededed;
+    }
+  }
+}
+
+[class*=cols]:empty,[class*=col]:empty {
+  position: relative;
+  margin-bottom: 20px;
+  &::before {
+    background-color: #ededed;
+    // height: 150px;
+  }
+}
+
+@import '../main.scss';
+
+// the map you pass to the blue-grid mixin gets merged into the base grid options,
+// so only need to redefine values that you would like to be different from the defaults.
+$blue-grid-options: (
+  gutter-width: 2%,
+  column-class: 'eg-cols',
+  container-class: 'eg-cs',
+  breakpoints: (
+    m: 1px
+  ),
+  output-sizes: (
+    m: (1)
+  )
+);
+
+@include blue-grid($blue-grid-options);
+
+body {
+  position: relative;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  .eg-cs {
+    position: relative;
+    height: 100%;
+  }
+  .eg-cols-m-1 {
+    background-color: rgba(blue, 0.08);
+    position: relative;
+    height: 100%;
+    margin: 0;
+    &:before {
+      display: none;
+    }
+  }
+}

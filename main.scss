@@ -1,0 +1,212 @@
+///
+/// Default grid options. The options you pass into the nestable mixin get merged into this map to determine your grid config.
+/// ---
+/// @type Map
+/// ---
+/// @group API
+/// @prop {Number} columns [12] The number of columns in the grid system
+/// @prop {Percentage} gutter-width [2.%] A single gutter width in %
+/// @prop {String} container-class ['cs'] Class for the grid container
+/// @prop {String} column-class ['cols'] Class prefix for the grid columns
+/// @prop {Map} breakpoints Map of breakpoint names and sizes
+/// @prop {Map} output-sizes Map of breakpoint names to column counts (so that we don't just spit out every possible nested combination of columns)
+///
+$nestable-options-base: (
+  columns: 12,
+  gutter-width: 2.5%,
+  container-class: 'cs',
+  column-class: 'cols',
+  breakpoints: (
+    s: 480px,
+    m: 600px,
+    l: 768px,
+    xl: 1024px,
+    xxl: 1200px
+  ),
+  output-sizes: (
+    m: (4, 6, 8),
+    xl: (3, 4, 6, 8, 9)
+  )
+) !default;
+
+@function _nestable-fetch(
+    $value,
+    $map1,
+    $map2
+  ) {
+
+  // First we need to merge the two configuration objects
+  $merged: map-merge($map1,$map2);
+  @if map-get($merged,$value) {
+    @return map-get($merged,$value)
+  }
+  @else {
+    @warn "#{$value} is not defined in either map";
+    @return false;
+  }
+}
+
+@function _nestable-fetch-grid-option(
+    $value,
+    $opts-map: $nestable-options-base
+  ) {
+  @return _nestable-fetch($value,$nestable-options-base,$opts-map);
+}
+
+@function _nestable-gutter-to-column-width($gutter-width, $count) {
+  @return (100% - ($count - 1)*$gutter-width)/$count;
+}
+
+@function _nestable-gutter-width($gutter-width, $count, $total) {
+  @return $gutter-width*($total/$count);
+}
+
+@function _nestable-column-width($count, $total, $root-total, $gutter-width) {
+  $adjusted-gutter: _nestable-gutter-width($gutter-width, $total, $root-total);
+  $column-width: _nestable-gutter-to-column-width($adjusted-gutter, $total);
+  @return $count*$column-width + ($count - 1)*$adjusted-gutter;
+}
+
+@function _nestable-column-class($column-class, $count, $bp) {
+  @return '.' + $column-class + '-' + $bp + '-' + $count;
+}
+
+@function _nestable-not-rule($column-class, $bp) {
+  @return ':not([class*=#{$column-class}-#{$bp}])';
+}
+
+@mixin _nestable-column($column-class, $width, $breakpoints, $output-sizes, $count, $bp, $parent-count: false, $parent-bp: false) {
+  $parent-class: '';
+  $parent-bp-size: false;
+  @if $parent-bp and $parent-count {
+    $parent-bp-size: map-get($breakpoints, $parent-bp);
+    $parent-class: _nestable-column-class($column-class, $parent-count, $parent-bp);
+  }
+  $bp-size: map-get($breakpoints, $bp);
+  $size: if($parent-bp-size and $bp-size < $parent-bp-size, $parent-bp-size, $bp-size);
+  @if $parent-bp and $parent-count {
+    $class: $parent-class;
+    @each $output-bp, $output-columns in $output-sizes {
+      $output-bp-size: map-get($breakpoints, $output-bp);
+      @if $output-bp-size > $parent-bp-size {
+        $class: $class + _nestable-not-rule($column-class, $output-bp);
+      }
+      @else {
+        $class: $class + ':not([#{$output-bp}])';
+      }
+      @if $output-bp-size >= $size {
+        $out: $class + ' ' + _nestable-column-class($column-class, $count, $bp);
+        @media screen and (min-width: $output-bp-size) {
+          #{$out} {
+            width: $width;
+          }
+        }
+      }
+    }
+  }
+  @else {
+    $class: _nestable-column-class($column-class, $count, $bp);
+    @media screen and (min-width: $size) {
+      #{$class} {
+        width: $width;
+      }
+    }
+  }
+}
+
+/// Outputs a set of classes that form a the nested responsive grid system based on the configuration supplied
+/// @param {Map} $grid-options [$nestable-options-base] Configuration map
+/// @group API
+
+@mixin nestable(
+    $grid-options: $nestable-options-base
+  ) {
+
+  $total-columns: _nestable-fetch-grid-option(columns, $grid-options);
+  $gutter-width: _nestable-fetch-grid-option(gutter-width, $grid-options);
+  $column-class: _nestable-fetch-grid-option(column-class, $grid-options);
+  $container-class: _nestable-fetch-grid-option(container-class, $grid-options);
+  $output-sizes: _nestable-fetch-grid-option(output-sizes, $grid-options);
+  $breakpoints: _nestable-fetch-grid-option(breakpoints, $grid-options);
+  $fixed-gutter: false;
+
+  @if unit($gutter-width) != '%' {
+    $fixed-gutter: ($gutter-width / 2);
+    $gutter-width: 0%;
+  }
+
+  .#{$container-class} {
+    text-align: justify;
+    text-justify: distribute;
+    font-size: 0;
+    @supports (display: -webkit-flex) or (display: flex) {
+      text-align: inherit;
+      text-justify: auto;
+      font-size: inherit;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-flex-wrap: wrap;
+              flex-wrap: wrap;
+      -webkit-justify-content: space-between;
+              justify-content: space-between;
+    }
+    @if $fixed-gutter {
+      margin-left: -#{$fixed-gutter};
+      margin-right: -#{$fixed-gutter};
+    }
+    &::after {
+      content: '';
+      width: 100%;
+      display: inline-block;
+      @supports (display: -webkit-flex) or (display: flex) {
+        display: none;
+      }
+    }
+    [class*=#{$column-class}] {
+      vertical-align: top;
+      display: inline-block;
+      font-size: 16px;
+      font-size: 1rem;
+      @supports (display: -webkit-flex) or (display: flex) {
+        text-align: inherit;
+        display: block;
+      }
+      @if $fixed-gutter {
+        padding-left: $fixed-gutter;
+        padding-right: $fixed-gutter;
+        box-sizing: border-box;
+      }
+      &, [class*=#{$column-class}] {
+        width: 100%;
+      }
+    }
+    @each $bp, $columns in $output-sizes {
+      @each $count in $columns {
+        $width: _nestable-column-width($count,$total-columns,$total-columns,$gutter-width);
+        @include _nestable-column($column-class, $width, $breakpoints, $output-sizes, $count, $bp);
+      }
+    }
+
+    @for $i from 1 through $total-columns {
+      $parent-count: $total-columns + 1 - $i;
+      @each $parent-bp, $parent-columns in $output-sizes {
+        @if (index($parent-columns, $parent-count)) {
+          $parent-width: _nestable-column-width($parent-count,$total-columns,$total-columns,$gutter-width);
+          $parent-bp-size: map-get($breakpoints, $parent-bp);
+          @each $bp, $columns in $output-sizes {
+            $bp-size: map-get($breakpoints, $bp);
+            @for $j from 1 through $parent-count {
+              $count: $parent-count + 1 - $j;
+              @if $count <= $parent-count {
+                @if index($columns, $count) {
+                  $width: _nestable-column-width($count,$parent-count,$total-columns,$gutter-width);
+                  @include _nestable-column($column-class, $width, $breakpoints, $output-sizes, $count, $bp, $parent-count, $parent-bp);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
