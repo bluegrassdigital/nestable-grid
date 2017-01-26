@@ -100,7 +100,7 @@ $nestable-options-base: (
 
 ## API
 
-See <a href="http://nestable-grid.github.io/#/iframe/sassdoc/index.html" target="_blank">API docs</a>
+See <a href="http://bluegrassdigital.github.io/nestable-grid/#/iframe/sassdoc/index.html" target="_blank">API docs</a>
 
 ## Contributing to nestable-grid
 
